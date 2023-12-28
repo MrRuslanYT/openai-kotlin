@@ -14,6 +14,7 @@ plugins {
     alias(libs.plugins.maven.publish) apply false
     alias(libs.plugins.spotless) apply false
     alias(libs.plugins.dokka)
+    id ("maven-publish")
 }
 
 subprojects {
