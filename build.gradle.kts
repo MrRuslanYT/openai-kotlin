@@ -52,3 +52,12 @@ subprojects {
 tasks.withType<DokkaMultiModuleTask>() {
     outputDirectory.set(projectDir.resolve("docs"))
 }
+
+publishing {
+    publications {
+        register<MavenPublication>("release") {
+            groupId = "com.pandacorp"
+            artifactId = "openai-kotlin"
+        }
+    }
+}
