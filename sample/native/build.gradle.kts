@@ -23,7 +23,7 @@ kotlin {
             dependencies {
                 //implementation("com.aallam.openai:openai-client:<version>")
                 implementation(projects.openaiClient)
-                implementation(libs.ktor.client.curl)
+//                implementation(libs.ktor.client.curl)
             }
         }
     }
