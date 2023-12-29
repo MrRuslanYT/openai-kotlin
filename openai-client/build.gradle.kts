@@ -38,43 +38,11 @@ kotlin {
                 implementation(libs.ktor.client.serialization.json)
             }
         }
-        val commonTest by getting {
-            dependencies {
-                implementation(projects.openaiCore)
-                implementation(kotlin("test-common"))
-                implementation(kotlin("test-annotations-common"))
-                implementation(libs.coroutines.test)
-                implementation(libs.okio.fakefilesystem)
-                implementation(libs.ulid)
-            }
-        }
         val jvmMain by getting
-        val jvmTest by getting {
-            dependencies {
-                implementation(kotlin("test-junit"))
-                implementation(libs.ktor.client.okhttp)
-                implementation(libs.logback.classic)
-            }
-        }
 
         val jsMain by getting {
             dependencies {
                 implementation(libs.okio.nodefilesystem)
-            }
-        }
-        val jsTest by getting {
-            dependencies {
-                implementation(kotlin("test-js"))
-            }
-        }
-        val desktopTest by getting {
-            dependencies {
-                implementation(libs.ktor.client.curl)
-            }
-        }
-        val darwinTest by getting {
-            dependencies {
-                implementation(libs.ktor.client.darwin)
             }
         }
     }

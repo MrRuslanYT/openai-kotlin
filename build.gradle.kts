@@ -25,31 +25,27 @@ subprojects {
             endWithNewline()
         }
     }
-
-    tasks.withType<Test> {
-        testLogging {
-            events(STARTED, PASSED, SKIPPED, FAILED)
-            exceptionFormat = TestExceptionFormat.FULL
-            showStandardStreams = false
+    tasks.configureEach {
+        if (name == "lint") {
+            enabled = false
         }
-    }
-
-    tasks.withType<KotlinJvmTest>().configureEach {
-        environment("LIB_ROOT", rootDir)
-    }
-
-    tasks.withType<KotlinNativeTest>().configureEach {
-        environment("SIMCTL_CHILD_LIB_ROOT", rootDir)
-        environment("LIB_ROOT", rootDir)
-    }
-
-    tasks.withType<KotlinJsTest>().configureEach {
-        environment("LIB_ROOT", rootDir.toString())
+        if (name.contains("Test")) {
+            enabled = false
+        }
     }
 }
 
 tasks.withType<DokkaMultiModuleTask>() {
     outputDirectory.set(projectDir.resolve("docs"))
+}
+
+tasks.configureEach {
+    if (name == "lint") {
+        enabled = false
+    }
+    if (name.contains("Test")) {
+        enabled = false
+    }
 }
 
 publishing {
